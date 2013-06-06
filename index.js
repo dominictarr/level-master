@@ -30,7 +30,7 @@ function find (ary, test) {
 function filterReverse (ary, test) {
   var l = ary.length, a = []
   while(l--)
-    if(test(ary[l], l, ary)) a.push(ary[l])
+    if(test(ary[l], l, ary)) a.unshift(ary[l])
 
   return a
 }
@@ -234,9 +234,6 @@ exports = module.exports = function (db, masterDb, id) {
     }
 
     return pull.map(function (op) {
-//      var parts = op.ts.split('!')
-//      var _id = parts.shift()
-//      var ts  = parts.shift()
 
       if(clock[op.id] > op.ts) return
 
